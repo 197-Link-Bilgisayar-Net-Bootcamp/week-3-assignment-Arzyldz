@@ -1,7 +1,7 @@
 ﻿
 using NLayer.BLL.Repository;
 
-namespace CrudOperations.API.Service
+namespace NLayer.BLL.Service
 {
     public abstract class CrudService<TDto> : ICrudService<TDto> where TDto : class
     {

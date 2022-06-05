@@ -2,7 +2,7 @@
 using NLayer.BLL.Repository;
 using NLayer.DAL.Models;
 
-namespace CrudOperations.API.Service
+namespace NLayer.BLL.Service
 {
     public class ProductService : CrudService<Product>
     {

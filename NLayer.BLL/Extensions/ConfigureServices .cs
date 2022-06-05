@@ -1,8 +1,8 @@
-﻿using CrudOperations.API.Service;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NLayer.BLL.Repository;
+using NLayer.BLL.Service;
 
 namespace NLayer.DAL.Models
 {

@@ -12,5 +12,6 @@ namespace NLayer.DAL.Models
         public decimal? UnitPrice { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Categories { get; set; }
+        public virtual ProductFeature ProductFeatures { get; set; }
     }
 }

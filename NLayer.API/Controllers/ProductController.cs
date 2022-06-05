@@ -1,5 +1,5 @@
-﻿using CrudOperations.API.Service;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using NLayer.BLL.Service;
 using NLayer.DAL.Models;
 
 namespace NLayer.API.Controllers
@@ -25,35 +25,54 @@ namespace NLayer.API.Controllers
 
         #region Methods
 
-        // GET: api/<ProductController>
+        /// <summary>
+        /// Tüm ürünleri listeleyen metot
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<Product> Get()
         {
             return _productService.GetAll();
         }
 
-        // GET api/<ProductController>/5
+        /// <summary>
+        /// Ürünü id ye göre getiren metot
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<Product> Get(int id)
         {
             return await _productService.GetById(id);
         }
 
-        // POST api/<ProductController>
+        /// <summary>
+        /// Ürün ekleyen metot
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         [HttpPost]
         public Task Post([FromBody] Product product)
         {
             return _productService.Add(product);
         }
 
-        // PUT api/<ProductController>
+       /// <summary>
+       /// Ürün güncelleyen metot
+       /// </summary>
+       /// <param name="product"></param>
+       /// <returns></returns>
         [HttpPut]
         public Task Put([FromBody] Product product)
         {
             return _productService.Edit(product);
         }
 
-        // DELETE api/<ProductController>/5
+       /// <summary>
+       /// Ürün silen metot
+       /// </summary>
+       /// <param name="id"></param>
+       /// <returns></returns>
         [HttpDelete("{id}")]
         public Task Delete(int id)
         {

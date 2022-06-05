@@ -1,5 +1,5 @@
-﻿using CrudOperations.API.Service;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using NLayer.BLL.Service;
 using NLayer.DAL.Models;
 
 namespace NLayer.API.Controllers
@@ -25,35 +25,54 @@ namespace NLayer.API.Controllers
 
         #region Methods
 
-        // GET: api/<CategoryController>
+        /// <summary>
+        /// Tüm kategorileri getiren metot
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<Category> Get()
         {
             return _categoryService.GetAll();
         }
 
-        // GET api/<CategoryController>/5
+        /// <summary>
+        /// Kategori id'ye göre getiren metot
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<Category> Get(int id)
         {
             return await _categoryService.GetById(id);
         }
 
-        // POST api/<CategoryController>
+        /// <summary>
+        /// Kategori ekleyen metot
+        /// </summary>
+        /// <param name="Category"></param>
+        /// <returns></returns>
         [HttpPost]
         public Task Post([FromBody] Category Category)
         {
             return _categoryService.Add(Category);
         }
 
-        // PUT api/<CategoryController>
+        /// <summary>
+        /// Kategori güncelleyen metot
+        /// </summary>
+        /// <param name="Category"></param>
+        /// <returns></returns>
         [HttpPut]
         public Task Put([FromBody] Category Category)
         {
             return _categoryService.Edit(Category);
         }
 
-        // DELETE api/<CategoryController>/5
+       /// <summary>
+       /// Kategori silen metot
+       /// </summary>
+       /// <param name="id"></param>
+       /// <returns></returns>
         [HttpDelete("{id}")]
         public Task Delete(int id)
         {

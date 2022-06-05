@@ -1,4 +1,4 @@
-﻿namespace CrudOperations.API.Service
+﻿namespace NLayer.BLL.Service
 {
     public interface ICrudService<TDto> where TDto : class
     {
