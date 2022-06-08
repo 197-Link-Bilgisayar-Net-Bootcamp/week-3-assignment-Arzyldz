@@ -12,7 +12,10 @@ namespace NLayer.DAL.Models
         {
             services.AddDbContext<MyDataContext>(options =>
             {
-                options.UseSqlServer(confign.GetConnectionString("WebApiDatabase"));
+            options.UseSqlServer(confign.GetConnectionString("WebApiDatabase"), action=>{
+
+                action.MigrationsAssembly("NLayer.DAL");
+            });
             });
 
             services.AddScoped<IRepository<Product>, ProductRepository>();
