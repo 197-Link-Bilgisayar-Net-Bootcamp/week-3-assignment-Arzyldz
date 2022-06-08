@@ -35,10 +35,5 @@ namespace NLayer.BLL.Service
         {
           return await  _iRepo.GetById(id);
         }
-
-        public async Task SaveChangesAsync()
-        {
-           await _iRepo.SaveChangesAsync();
-        }
     }
 }
