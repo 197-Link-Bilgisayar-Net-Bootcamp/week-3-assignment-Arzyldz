@@ -9,7 +9,7 @@ namespace NLayer.BLL.Repository
 {
     public class CategoryRepository : Repository<Category>
     {
-        public CategoryRepository(MyDataContext dbContext) : base(dbContext)
+        public CategoryRepository(ApDataContext dbContext) : base(dbContext)
         {
         }
     }

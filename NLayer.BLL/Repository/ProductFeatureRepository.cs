@@ -9,7 +9,7 @@ namespace NLayer.BLL.Repository
 {
     public class ProductFeatureRepository : Repository<ProductFeature>
     {
-        public ProductFeatureRepository(MyDataContext dbContext) : base(dbContext)
+        public ProductFeatureRepository(ApDataContext dbContext) : base(dbContext)
         {
         }
     }

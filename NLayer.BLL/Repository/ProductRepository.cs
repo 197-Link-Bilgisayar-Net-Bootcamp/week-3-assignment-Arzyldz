@@ -4,9 +4,9 @@ namespace NLayer.BLL.Repository
 {
     public class ProductRepository : Repository<Product>
     {
-        private readonly MyDataContext _dbContext;
+        private readonly ApDataContext _dbContext;
 
-        public ProductRepository(MyDataContext dbContext) : base(dbContext)
+        public ProductRepository(ApDataContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
         }

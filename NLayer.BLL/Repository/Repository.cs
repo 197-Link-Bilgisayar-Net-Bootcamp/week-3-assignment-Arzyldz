@@ -6,9 +6,9 @@ namespace NLayer.BLL.Repository
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly MyDataContext _dbContext;
+        private readonly ApDataContext _dbContext;
         protected readonly DbSet<TEntity> _dbSet;
-        public Repository(MyDataContext dbContext)
+        public Repository(ApDataContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();

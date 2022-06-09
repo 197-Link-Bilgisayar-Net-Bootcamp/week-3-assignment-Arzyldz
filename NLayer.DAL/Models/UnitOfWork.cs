@@ -8,9 +8,9 @@ namespace NLayer.DAL.Models
 {
     public class UnitOfWork
     {
-        private readonly MyDataContext _DataContext;
+        private readonly ApDataContext _DataContext;
 
-        public UnitOfWork(MyDataContext dataContext)
+        public UnitOfWork(ApDataContext dataContext)
         {
             _DataContext = dataContext;
         }

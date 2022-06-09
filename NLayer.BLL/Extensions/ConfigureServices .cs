@@ -10,9 +10,9 @@ namespace NLayer.DAL.Models
     {
         public static void AddServices(IServiceCollection services, IConfiguration confign)
         {
-            services.AddDbContext<MyDataContext>(options =>
+            services.AddDbContext<ApDataContext>(options =>
             {
-            options.UseSqlServer(confign.GetConnectionString("WebApiDatabase"), action=>{
+            options.UseSqlServer(confign.GetConnectionString("conn"), action=>{
 
                 action.MigrationsAssembly("NLayer.DAL");
             });
@@ -22,7 +22,9 @@ namespace NLayer.DAL.Models
             services.AddScoped<IRepository<Category>, CategoryRepository>();
             services.AddScoped<ICrudService<Product>, ProductService>();
             services.AddScoped<ICrudService<Category>, CategoryService>();
-
+            services.AddScoped<UnitOfWork>();
+            services.AddScoped<ProductFeatureRepository>();
+            services.AddScoped<CategoryRepository>();
         }
     }
 }
