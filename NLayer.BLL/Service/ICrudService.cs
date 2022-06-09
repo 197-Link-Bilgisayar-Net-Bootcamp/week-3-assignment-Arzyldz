@@ -7,6 +7,5 @@
         Task Add(TDto entity);
         Task Edit(TDto entity);
         Task Del(int id);
-        Task SaveChangesAsync();
     }
 }

@@ -18,7 +18,6 @@ namespace NLayer.BLL.Repository
         {
             await _dbContext.Set<TEntity>().AddAsync(entity);
             //_dbContext.Entry(entity).State = EntityState.Added;
-            await SaveChangesAsync();
         }
         public async Task Del(int id)
         {
@@ -36,7 +35,6 @@ namespace NLayer.BLL.Repository
                 {
                     _dbSet.Attach(entity);
                     _dbSet.Remove(entity);
-                    await SaveChangesAsync();
                 }
             }
         }
@@ -45,7 +43,7 @@ namespace NLayer.BLL.Repository
         {
             _dbSet.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
-            await SaveChangesAsync();
+          
         }
 
         public IList<TEntity> GetAll()
@@ -58,10 +56,6 @@ namespace NLayer.BLL.Repository
         public async Task<TEntity> GetById(int id)
         {
             return  await _dbSet.FindAsync(id);
-        }
-        public async Task SaveChangesAsync()
-        {
-             _dbContext.SaveChangesAsync();
         }
     }
 }

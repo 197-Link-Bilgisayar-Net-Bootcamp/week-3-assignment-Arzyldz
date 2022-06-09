@@ -13,7 +13,9 @@ namespace NLayer.DAL.Models
         [Key]
         [ForeignKey("Product")]
         public int Id { get; set; }
-        public decimal Quantity { get; set; }
-        
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public Product Product { get; set; }
+
     }
 }
