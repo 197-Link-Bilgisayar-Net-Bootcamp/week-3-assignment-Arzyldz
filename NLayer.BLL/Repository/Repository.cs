@@ -45,7 +45,6 @@ namespace NLayer.BLL.Repository
             _dbContext.Entry(entity).State = EntityState.Modified;
           
         }
-
         public async  Task<IList<TEntity>> GetAll()
         {
             return await _dbSet.ToListAsync();
