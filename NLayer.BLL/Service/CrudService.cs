@@ -1,5 +1,6 @@
 ﻿
 using NLayer.BLL.Repository;
+using NLayer.DAL.Models;
 
 namespace NLayer.BLL.Service
 {
@@ -26,14 +27,48 @@ namespace NLayer.BLL.Service
             await _iRepo.Edit(entity);
         }
 
-        public IList<TDto> GetAll()
+        public async Task<Response<IList<TDto>>> GetAll()
         {
-          return  _iRepo.GetAll();
+            var lst = await _iRepo.GetAll();
+
+            if (!lst.Any())
+            {
+                return new Response<IList<TDto>>()
+                {
+                    Data = null,
+                    Errors = new List<string>() { "Kayıt bulunamadı" },
+                    Status = 404
+                };
+            }
+
+            return new Response<IList<TDto>>()
+            {
+                Data = lst,
+                Errors = null,
+                Status = 200
+            };
         }
 
-        public async Task<TDto> GetById(int id)
+        public async Task<Response<TDto>> GetById(int id)
         {
-          return await  _iRepo.GetById(id);
+            var tdto = await _iRepo.GetById(id);
+
+            if (tdto != null)
+            {
+                return new Response<TDto>()
+                {
+                    Data = null,
+                    Errors = new List<string>() { "Kayıt bulunamadı" },
+                    Status = 404
+                };
+            }
+
+            return new Response<TDto>()
+            {
+                Data = tdto,
+                Errors = null,
+                Status = 200
+            };
         }
     }
 }

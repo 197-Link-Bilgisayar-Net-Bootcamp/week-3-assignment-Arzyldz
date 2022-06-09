@@ -46,11 +46,9 @@ namespace NLayer.BLL.Repository
           
         }
 
-        public IList<TEntity> GetAll()
+        public async  Task<IList<TEntity>> GetAll()
         {
-            List<TEntity> listProduct =  _dbSet.ToList();
-
-            return listProduct;
+            return await _dbSet.ToListAsync();
         }
 
         public async Task<TEntity> GetById(int id)
