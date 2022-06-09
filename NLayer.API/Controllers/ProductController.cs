@@ -30,9 +30,10 @@ namespace NLayer.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Product> Get()
+        public async Task<IActionResult> Get()
         {
-            return _productService.GetAll();
+            var response =await _productService.GetAll();
+            return new ObjectResult(response){ StatusCode=response.Status};
         }
 
         /// <summary>
@@ -41,9 +42,10 @@ namespace NLayer.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<Product> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await _productService.GetById(id);
+            var response = await _productService.GetById(id);
+            return new ObjectResult(response) { StatusCode = response.Status };
         }
 
         /// <summary>

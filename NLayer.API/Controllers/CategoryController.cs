@@ -30,20 +30,22 @@ namespace NLayer.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Category> Get()
+        public async Task<IActionResult> Get()
         {
-            return _categoryService.GetAll();
+            var response = await _categoryService.GetAll();
+            return new ObjectResult(response) { StatusCode = response.Status };
         }
 
         /// <summary>
-        /// Kategori id'ye göre getiren metot
+        /// Ürünü id ye göre getiren metot
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<Category> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await _categoryService.GetById(id);
+            var response = await _categoryService.GetById(id);
+            return new ObjectResult(response) { StatusCode = response.Status };
         }
 
         /// <summary>
