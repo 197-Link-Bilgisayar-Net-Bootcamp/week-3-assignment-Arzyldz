@@ -37,6 +37,17 @@ namespace NLayer.API.Controllers
         }
 
         /// <summary>
+        /// En ucuz 5 ürünü listeleyen metot
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/[controller]")]
+        public IActionResult GetCheapProductTop5()
+        {
+            return (IActionResult)((ProductService)_productService).GetCheapProductTop5();
+            
+        }
+        /// <summary>
         /// Ürünü id ye göre getiren metot
         /// </summary>
         /// <param name="id"></param>

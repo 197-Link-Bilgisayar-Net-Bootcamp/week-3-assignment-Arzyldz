@@ -6,11 +6,13 @@ namespace NLayer.BLL.Service
 {
     public class ProductService : CrudService<Product>
     {
+        private readonly ProductRepository pRepo;
         private readonly CategoryRepository categoryRepository;
         private readonly ProductFeatureRepository productFeatureRepository;
         private readonly UnitOfWork unitOfWork;
-        public ProductService(IRepository<Product> iRepo, UnitOfWork unitOfWork, ProductFeatureRepository productFeatureRepository,CategoryRepository categoryRepository) : base(iRepo)
+        public ProductService(IRepository<Product> iRepo, UnitOfWork unitOfWork, ProductFeatureRepository productFeatureRepository, CategoryRepository categoryRepository) : base(iRepo)
         {
+            this.pRepo = (ProductRepository)iRepo;
             this.unitOfWork = unitOfWork;
             this.productFeatureRepository = productFeatureRepository;
             this.categoryRepository = categoryRepository;
@@ -23,30 +25,16 @@ namespace NLayer.BLL.Service
         {
             categoryRepository.Add(cat);
             productFeatureRepository.Add(productFeature);
-           base.Add(product);
-           await unitOfWork.Commit();
+            base.Add(product);
+            await unitOfWork.Commit();
 
-
-            //Category cat = new Category() { 
-            //Name="Yeni Categori",
-            //Description="Açıklama 1"
-            //};
-
-            //ProductFeature productFeature = new ProductFeature()
-            //{
-            //    Height = 100,
-            //    Width = 50
-            //};
-
-            //Product product = new Product()
-            //{
-            //   Name="Ürün1",
-            //   UnitPrice=300,
-            //   Categories=cat,
-            //   ProductFeatures=productFeature
-
-            //};
 
         }
+        public List<Product> GetCheapProductTop5()
+        {
+          return (List<Product>)pRepo.GetCheapProductTop5();
+
+        }
+       
     }
 }

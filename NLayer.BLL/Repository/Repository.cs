@@ -19,7 +19,7 @@ namespace NLayer.BLL.Repository
             await _dbContext.Set<TEntity>().AddAsync(entity);
             //_dbContext.Entry(entity).State = EntityState.Added;
         }
-        public async Task Del(int id)
+        public virtual async Task Del(int id)
         {
             TEntity? entity = await _dbSet.FindAsync(id);
             if (entity == null) return;

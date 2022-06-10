@@ -17,7 +17,7 @@ namespace NLayer.BLL.Service
            await _iRepo.Add(entity);
         }
 
-        public async Task Del(int id)
+        public virtual async Task Del(int id)
         {
             await _iRepo.Del(id);
         }
